@@ -1,0 +1,266 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f8f8;
+}
+
+.main-container {
+    display: flex;
+}
+
+.content{
+    width: 100%;
+    padding: 35px 40px;
+}
+
+.funnel-container h2{
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.btn-add-stage {
+    background-color: #0D6EDE;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+#confirmAddContent{
+    font-weight: 600;
+}
+
+#contentInputText{
+    margin-bottom: 10px;
+}
+
+#contentInputFile{
+    font-size: 14px;
+}
+
+.accordion-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.accordion-item {
+    background-color: #ecf0f1;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    padding: 15px;
+    width: 100%;
+    overflow: visible;
+    position: relative; /* Garante que o dropdown fique dentro do contexto da etapa */
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 15px 20px;
+    box-shadow: 0px 5px 25px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.buttons-edit-content{
+    display: flex;
+    gap: 10px;
+}
+
+.accordion-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.accordion-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.accordion-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
+.accordion-content {
+    margin-top: 5px;
+    display: block; /* Exibe sempre */
+    max-height: none; /* Não limita a altura */
+    overflow: visible; /* Permite o dropdown se sobrepor */
+    background-color: #fafafa;
+    padding: 15px 20px;
+    box-shadow: 0px 4px 30px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 350px;
+    position: relative;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+}
+
+.close {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+.btn-confirm {
+    background-color: #0D6EDE;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+textarea#contentInput {
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    resize: none;
+}
+
+#stageNameInput, #renameStageInput{
+    padding: 8px;
+    margin: 15px 0px;
+    width: 100%;
+}
+
+
+/* Dropdown customizado para garantir que ele se sobressaia */
+.dropdown-menu {
+    z-index: 1060; /* Certifique-se de que o dropdown se sobreponha */
+    position: absolute; /* Posiciona o dropdown dentro do contexto da etapa */
+    top: 100%;
+    left: 0;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    margin: 0;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+}
+
+/* Adicionar uma borda ao botão do dropdown para melhor visibilidade */
+.dropdown-toggle::after {
+    margin-left: 0.5rem;
+    border: solid transparent;
+    border-width: 0.25em 0.25em 0 0.25em;
+    border-top-color: #fff;
+}
+
+/* Certificar-se de que o dropdown não seja cortado pelo overflow */
+.accordion-item {
+    overflow: visible;
+}
+
+
+/* Estilo para conteúdo adicionado */
+.content-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #00000017;
+}
+
+.content-item img,
+.content-item video {
+    max-width: 50px;
+    max-height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.content-item p {
+    margin: 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Estilo para pré-visualização de arquivo */
+.file-preview {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #555;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-input {
+    margin-top: 10px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 50px;
+    resize: none; /* Remover o resize manual */
+}
+
+/* Estilos para Modo Escuro */
+
+body.theme-dark .modal-content{
+    background-color: #171717;
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CRM - Gestão de Leads</title>
+        <link rel="stylesheet" href="crm.css">
+        <link rel="stylesheet" href="/components/sidebar/sidebar.css">
+        <link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/x-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    </head>
+    <body class="theme-light">
+        <div class="main-container"> <!-- Div Principal que terá 2 Divs lado a lado -->
+            <!-- Menu de Navegação Lateral -->
+            <aside class="sidebar" id="sidebar">
+                <div class="logo-yipe-sidebar">
+                    <div class="logo-icon-menu-hamburguer">
+                        <img id="logoImage" src="/assets/images/logo-back-white.svg">
+                        <button id="sidebarToggle">
+                            <i id="sidebarIcon" class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                    <div class="section1-li-config">
+                        <button><a href="/index.html"><i class="fa-solid fa-chart-simple"></i>  <span class="menu-text">Dashboard</span></a></button>
+                        <button><a href="/sell-funnel/funnel.html"><i class="fa-solid fa-filter"></i> <span class="menu-text">Funil de Vendas</span></a></button>
+                        <button><a href="#"><i class="fa-solid fa-chart-pie"></i> <span class="menu-text">CRM Integrado</span></a></button>
+                        <button><a href="#"><i class="fa-solid fa-address-book"></i> <span class="menu-text">Contatos</span></a></button>
+                    </div>
+                </div>
+                <nav class="sidebar-container">
+                    <div class="section-li-config">
+                        <button id="themeToggle" title="Alternar entre tema claro e escuro">
+                            <i id="themeIcon" class="fas fa-moon"></i> <span class="menu-text">Claro/Escuro</span>
+                        </button>
+                        <button><a href="#"><i class="fa-sharp fa-solid fa-gear"></i> <span class="menu-text">Configurações</span></a></button> 
+                        <div class="profile-dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="profileDropdown" aria-expanded="false">
+                                <i class="fas fa-user"></i> <span class="menu-text">Perfil</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                                <li><a class="dropdown-item" href="/profile/profile.html"><i class="fas fa-user-edit"></i> Editar Perfil</a></li>
+                                <hr>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </aside>
+
+            <!-- Conteúdo Principal que aparecerá ao lado do sidebar -->
+            <main class="content" id="main-content">
+
+                <div class="crm-container">
+                    <header>
+                        <h1>Gestão de Leads</h1>
+                        <div class="header-buttons">
+                            <button id="createLeadBtn" class="btn btn-primary" title="Criar um novo lead">Criar Lead</button>
+                            <button id="exportCSVBtn" class="btn btn-secondary" title="Exportar leads em CSV">Exportar CSV</button>
+                            <button id="exportPDFBtn" class="btn btn-secondary" title="Exportar leads em PDF">Exportar PDF</button>
+                        </div>
+                    </header>
+
+                    <!-- Cards de Informações -->
+                    <div class="info-cards">
+                        <div class="info-card">
+                            <h3>Total de Leads</h3>
+                            <p id="totalLeads">0</p>
+                        </div>
+                        <div class="info-card">
+                            <h3>Total de Conversões</h3>
+                            <p id="totalConversions">0</p>
+                        </div>
+                    </div>
+
+                    <!-- Área de Notificações -->
+                    <div id="notificationContainer" class="notification-container"></div>
+
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Buscar leads...">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-filter"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="filterDropdown">
+                                <div class="form-group">
+                                    <label for="filterDate">Data de Criação</label>
+                                    <input type="date" id="filterDate" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="filterStatus">Status</label>
+                                    <select id="filterStatus" class="form-control">
+                                        <option value="">Todos os Status</option>
+                                        <option value="quente">Quente</option>
+                                        <option value="morno">Morno</option>
+                                        <option value="frio">Frio</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="filterValue">Valor Mínimo</label>
+                                    <input type="number" id="filterValue" class="form-control" placeholder="R$ 0,00">
+                                </div>
+                                <button id="applyFiltersBtn" class="btn btn-primary">Aplicar Filtros</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="pipelineContainer" class="pipeline">
+                        <div class="stage" data-stage="prospect">
+                            <h2>Prospect</h2>
+                            <div class="lead-total" id="prospectTotal">R$ 0,00</div>
+                            <div class="leads" id="prospectLeads"></div>
+                        </div>
+                        <div class="stage" data-stage="qualificado">
+                            <h2>Qualificado</h2>
+                            <div class="lead-total" id="qualificadoTotal">R$ 0,00</div>
+                            <div class="leads" id="qualificadoLeads"></div>
+                        </div>
+                        <div class="stage" data-stage="proposta">
+                            <h2>Proposta</h2>
+                            <div class="lead-total" id="propostaTotal">R$ 0,00</div>
+                            <div class="leads" id="propostaLeads"></div>
+                        </div>
+                        <div class="stage" data-stage="fechado">
+                            <h2>Fechado</h2>
+                            <div class="lead-total" id="fechadoTotal">R$ 0,00</div>
+                            <div class="leads" id="fechadoLeads"></div>
+                        </div>
+                    </div>
+
+                    <!-- Modal de Criação/Edição de Lead -->
+                    <div id="leadModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2 id="modalTitle">Criar Lead</h2>
+                            <form id="leadForm">
+                                <div class="form-group">
+                                    <label for="leadName">Nome do Lead</label>
+                                    <input type="text" id="leadName" name="leadName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="leadContact">Contato</label>
+                                    <input type="text" id="leadContact" name="leadContact" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="leadStatus">Status</label>
+                                    <select id="leadStatus" name="leadStatus">
+                                        <option value="quente">Quente</option>
+                                        <option value="morno">Morno</option>
+                                        <option value="frio">Frio</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="leadValue">Valor</label>
+                                    <input type="number" id="leadValue" name="leadValue" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="leadStage">Etapa</label>
+                                    <select id="leadStage" name="leadStage">
+                                        <option value="prospect">Prospect</option>
+                                        <option value="qualificado">Qualificado</option>
+                                        <option value="proposta">Proposta</option>
+                                        <option value="fechado">Fechado</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="leadComments">Comentários</label>
+                                    <textarea id="leadComments" name="leadComments" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="leadAttachments">Anexos</label>
+                                    <input type="file" id="leadAttachments" name="leadAttachments" multiple>
+                                    <div id="attachmentPreview" class="attachment-preview"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="leadReminder">Lembrete</label>
+                                    <input type="datetime-local" id="leadReminder" name="leadReminder">
+                                    <small>Configurar um lembrete para este lead</small>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Salvar Lead</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+                    <script src="crm.js"></script>
+                    <script src="/components/sidebar/sidebar.js"></script>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

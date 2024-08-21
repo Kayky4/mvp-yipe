@@ -1,0 +1,19 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 25px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f8f8;
+}
+
+/* .main-container {
+    display: flex;
+} */
+
+/* .content {
+    padding: 20px;
+} */

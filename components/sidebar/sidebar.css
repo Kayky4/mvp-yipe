@@ -1,0 +1,219 @@
+.logo-yipe-sidebar img{
+    width: 130px;
+}
+
+.sidebar-container{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.sidebar{
+    background-color: #f1f1f3;
+    padding: 20px 10px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 22%;
+    transition: width 0.3s ease; /* Animação de transição */
+    overflow: hidden; /* Evitar que o conteúdo fique visível ao encolher */
+}
+
+.sidebar button{
+    border-style: none;
+    width: 100%;
+    text-align: left;
+    padding: 0;
+}
+
+.sidebar button a, .profile-dropdown button, #themeToggle{
+    color: #333;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    font-weight: 600;
+    padding: 16px 25px;
+    font-size: 16.2px;
+}
+
+.sidebar button a:hover, .profile-dropdown button:hover, #themeToggle:hover{
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    color: #333;
+}
+
+.sidebar button i{
+    margin-right: 12px;
+    color: #333;
+}
+
+.section1-li-config, .section-li-config{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.logo-icon-menu-hamburguer{
+    display: flex;
+    /* flex-wrap: wrap; */
+    align-items: center;
+    margin: 12px 15px 25px 15px;
+}
+
+.logo-icon-menu-hamburguer #sidebarToggle{
+    text-align: right;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+body.theme-dark .logo-icon-menu-hamburguer #sidebarToggle{
+    background-color: #1f1f1f;
+}
+
+.logo-icon-menu-hamburguer #sidebarToggle i{
+    /* padding-left: 5px; */
+    margin: 0;
+}
+
+/* Estilo para o dropdown de perfil */
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.profile-dropdown .dropdown-toggle {
+    background-color: #f1f1f3;
+    border: none;
+    color: #333;
+}
+
+.profile-dropdown .dropdown-menu {
+    position: absolute;
+    height: 145px;
+    top: -200%;
+    left: 100%;
+    bottom: 100%;
+    margin-left: 18px; /* Espaçamento entre o botão e o menu */
+    width: 160px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: none; /* Oculta o menu por padrão */
+}
+
+.profile-dropdown .dropdown-menu.show {
+    display: block; /* Exibe o menu quando necessário */
+}
+
+.profile-dropdown .dropdown-item {
+    color: #333;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-dropdown .dropdown-item i {
+    margin-right: 10px;
+    color: #333;
+}
+
+
+/* Modo Escuro */
+
+body.theme-dark .sidebar, 
+body.theme-dark .sidebar button a, 
+body.theme-dark .profile-dropdown button, 
+body.theme-dark #themeToggle{
+    background-color: #1f1f1f;
+    color: #f7f7f7;
+}
+
+body.theme-dark .sidebar button a:hover, 
+body.theme-dark .profile-dropdown button:hover, 
+body.theme-dark #themeToggle:hover{
+    background-color: #464646;
+    box-shadow: 0 2px 20px rgba(255, 255, 255, 0.041);
+    border-radius: 0;
+}
+
+body.theme-dark .sidebar button i{
+    color: #f7f7f7;
+}
+
+body.theme-dark .sidebar button:hover{
+    border-radius: 8px;
+}
+
+/* Estilo para a sidebar encolhida */
+.sidebar.collapsed {
+    width: 70px; /* Define a largura quando encolhida */
+    padding: 25px 10px 32px 10px;
+    text-align: center;
+}
+
+.sidebar.collapsed button i{
+    margin: 0;
+}
+
+.sidebar.collapsed #logoImage{
+    margin: 0;
+}
+
+.sidebar.collapsed button a, .sidebar.collapsed .dropdown-toggle, .sidebar.collapsed #themeToggle{
+    margin: 0px 0px;
+    padding: 8px 0px;
+    text-align: center;
+}
+
+.sidebar.collapsed .section-li-config, .sidebar.collapsed .section1-li-config{
+    gap: 25px;
+}
+
+.sidebar.collapsed .logo-icon-menu-hamburguer #sidebarToggle{
+    text-align: center;
+    padding: 4px 0px;
+}
+
+.sidebar.collapsed .logo-icon-menu-hamburguer #sidebarToggle:hover{
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.theme-dark .sidebar.collapsed .logo-icon-menu-hamburguer #sidebarToggle:hover{
+    background-color: #464646;
+    border-radius: 0;
+    /* border-radius: 10px; */
+}
+
+.sidebar.collapsed .logo-icon-menu-hamburguer{
+    gap: 25px;
+    flex-wrap: wrap-reverse;
+    margin: 0px 0px 25px 0px;
+    justify-content: center;
+}
+
+/* Ajustes para ícones e texto ao encolher */
+.sidebar.collapsed .menu-text {
+    display: none; /* Esconde o texto dos menus */
+}
+
+.sidebar.collapsed .sidebar-container button,
+.sidebar.collapsed .profile-dropdown button {
+    justify-content: center; /* Centraliza os ícones */
+}
+
+.sidebar.collapsed .logo-yipe-sidebar img {
+    width: 30px; /* Tamanho da logo menor */
+    transition: width 0.3s ease; /* Animação suave */
+}
+
+/* Animação suave para a mudança de ícone */
+#sidebarIcon {
+    transition: transform 0.3s ease;
+}

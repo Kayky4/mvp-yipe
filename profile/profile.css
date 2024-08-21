@@ -1,0 +1,142 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f8f8;
+}
+
+.main-container{
+    display: flex;
+}
+
+#main-content{
+    width: 80%;
+}
+
+.profile-content {
+    flex: 1;
+    padding: 45px;
+}
+
+.profile-content h1{
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+#profileForm label, .content-section-profile-info h3{
+    color: #374151;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.section {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-section-profile-info{
+    width: 25%;
+}
+
+.name-section-profile-info h2{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.name-section-profile-info p{
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.content-section-profile-info{
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 25px;
+    width: 60%;
+}
+
+.profile-photo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.profile-photo img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.btn-secondary {
+    background-color: #f4f4f4;
+    color: #333;
+    margin-right: 10px;
+}
+
+.btn-primary {
+    float: right;
+}
+
+.btn-primary:hover {
+    background-color: #5046e5;
+}
+
+#changePasswordBtn, #changePhotoBtn{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #000;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 70%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+form button[type="submit"] {
+    margin-top: 20px;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group #language{
+    width: 30%;
+}

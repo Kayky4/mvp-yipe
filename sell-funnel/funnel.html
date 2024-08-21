@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Yipe | Funil de Vendas</title>
+        <link rel="stylesheet" href="/sell-funnel/funnel.css">
+        <link rel="stylesheet" href="/components/sidebar/sidebar.css">
+        <link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/x-icon">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body class="theme-light">
+        <div class="main-container"> <!-- Div Principal que terá 2 Divs lado a lado -->
+            <!-- Menu de Navegação Lateral -->
+            <aside class="sidebar" id="sidebar">
+                <div class="logo-yipe-sidebar">
+                    <div class="logo-icon-menu-hamburguer">
+                        <img id="logoImage" src="/assets/images/logo-back-white.svg">
+                        <button id="sidebarToggle">
+                            <i id="sidebarIcon" class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                    <div class="section1-li-config">
+                        <button><a href="/index.html"><i class="fa-solid fa-chart-simple"></i>  <span class="menu-text">Dashboard</span></a></button>
+                        <button><a href="#"><i class="fa-solid fa-filter"></i> <span class="menu-text">Funil de Vendas</span></a></button>
+                        <button><a href="/crm-integration/crm.html"><i class="fa-solid fa-chart-pie"></i> <span class="menu-text">CRM Integrado</span></a></button>
+                        <button><a href="#"><i class="fa-solid fa-address-book"></i> <span class="menu-text">Contatos</span></a></button>
+                    </div>
+                </div>
+                <nav class="sidebar-container">
+                    <div class="section-li-config">
+                        <button id="themeToggle" title="Alternar entre tema claro e escuro">
+                            <i id="themeIcon" class="fas fa-moon"></i> <span class="menu-text">Claro/Escuro</span>
+                        </button>
+                        <button><a href="#"><i class="fa-sharp fa-solid fa-gear"></i> <span class="menu-text">Configurações</span></a></button> 
+                        <div class="profile-dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="profileDropdown" aria-expanded="false">
+                                <i class="fas fa-user"></i> <span class="menu-text">Perfil</span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                                <li><a class="dropdown-item" href="/profile/profile.html"><i class="fas fa-user-edit"></i> Editar Perfil</a></li>
+                                <hr>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </aside>
+
+            <!-- Conteúdo Principal que aparecerá ao lado do sidebar -->
+            <main class="content" id="main-content">
+                <!-- Conteúdo do dashboard será carregado aqui -->
+                <div class="funnel-container">
+                    <h2>Funil de Vendas</h2>
+                    <button id="addStageBtn" class="btn-add-stage">Adicionar Etapas</button>
+                    
+                    <div id="salesFunnelAccordion" class="accordion-container">
+                        <!-- Etapas serão adicionadas aqui dinamicamente -->
+                    </div>
+                </div>
+        
+                <!-- Modal para adicionar etapas -->
+                <div id="addStageModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Adicionar Etapa</h3>
+                        <input type="text" id="stageNameInput" placeholder="Nome da Etapa (máx. 50 caracteres)" maxlength="50">
+                        <p id="stageNameError" class="error-message"></p>
+                        <button id="confirmAddStage" class="btn-confirm">Adicionar</button>
+                    </div>
+                </div>
+        
+                <!-- Modal para renomear etapas -->
+                <div id="renameStageModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Renomear Etapa</h3>
+                        <input type="text" id="renameStageInput" placeholder="Novo Nome da Etapa (máx. 50 caracteres)" maxlength="50">
+                        <p id="renameStageError" class="error-message"></p>
+                        <button id="confirmRenameStage" class="btn-confirm">Salvar</button>
+                    </div>
+                </div>
+        
+                <!-- Modal para adicionar conteúdo -->
+                <div id="addContentModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3 id="addContentTitle">Adicionar Conteúdo</h3>
+        
+                        <!-- Campo de entrada para texto (mensagem) -->
+                        <textarea id="contentInputText" class="form-control content-input" placeholder="Insira o conteúdo aqui..."></textarea>
+        
+                        <!-- Campo para upload de arquivos (áudio, imagem, vídeo, documento) -->
+                        <div id="fileUploadWrapper" class="content-input" style="display: none;">
+                            <input type="file" id="contentInputFile" class="form-control-file">
+                            <p id="fileNamePreview" class="file-preview"></p>
+                        </div>
+                        
+                        <button id="confirmAddContent" class="btn btn-success mt-2">Adicionar</button>
+                    </div>
+                </div>
+                
+            </main>
+        </div>
+
+        <script src="/sell-funnel/funnel.js"></script>
+        <script src="/components/sidebar/sidebar.js"></script>
+    </body>
+</html>
