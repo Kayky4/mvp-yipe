@@ -1,0 +1,140 @@
+/* Seletores Gerais */
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    margin: 0;
+}
+
+
+/* Conteúdo do Forms */
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+}
+
+/* Logo da Yipe */
+
+.logo-yipe-login{
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 10px;
+}
+
+.logo-yipe-login img{
+    width: 170px;
+}
+
+
+/* Campos de Input do Formulário */
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 16px 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+/* Ícone de Visualizar e Esconder Senha do Input Password */
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.password-toggle i {
+    font-size: 16px;
+    color: #333;
+}
+
+
+/* Link de Recuperar senha */
+
+.recuperar-senha{
+    margin: 8px 0px 35px 0px;
+    text-align: right;
+}
+
+.recuperar-senha a{
+    color: #0D6EDE;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+
+/* Ícones de outras plataformas para acessos alternativo */
+
+.social-login {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.social-login button {
+    border: none;
+    background: none;
+    padding: 10px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.google-btn {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.apple-btn img, 
+.social-login img{
+    width: 25px;
+}
+
+.google-btn img{
+    width: 21px;
+}
+
+.apple-btn {
+    background-color: #000;
+    border-radius: 4px;
+}
+
+
+/* Botão de Acessar Conta */
+
+button[type="submit"] {
+    background-color: #0D6EDE;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover{
+    background-color: #227fe9;
+}
