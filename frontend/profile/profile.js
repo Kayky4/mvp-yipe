@@ -44,3 +44,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
 });
+
+const token = localStorage.getItem('token');
+
+document.getElementById('updateProfileForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const fullName = document.getElementById('fullName').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const profileImage = document.getElementById('profileImage').value;
+
+    try {
+        const response = await fetch('http://localhost:3009/api/auth/me', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`  // Envia o token JWT no cabeçalho da requisição
+            },
+            body: JSON.stringify({ fullName, email, phone, profileImage })
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+            alert('Perfil atualizado com sucesso!');
+            // Atualize a interface conforme necessário
+        } else {
+            alert(data.error);
+        }
+    } catch (err) {
+        console.error('Erro ao atualizar perfil:', err);
+    }
+});
+

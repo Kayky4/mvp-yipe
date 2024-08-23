@@ -35,3 +35,36 @@ function togglePasswordVisibility() {
         passwordToggle.innerHTML = '<i class="fas fa-eye"></i>';
     }
 }
+
+
+
+
+
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        const response = await fetch('http://localhost:3009/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+            // Armazena o token JWT no armazenamento local (localStorage)
+            localStorage.setItem('token', data.token);
+            window.location.href = data.redirectUrl;  // Redireciona para o dashboard
+        } else {
+            alert(data.error);
+        }
+    } catch (err) {
+        console.error('Erro ao tentar logar:', err);
+    }
+});
+

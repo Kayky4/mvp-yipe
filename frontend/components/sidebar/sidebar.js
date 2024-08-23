@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Caminhos das logos
     const logos = {
         light: {
-            expanded: '/assets/images/logo-back-white.svg',
-            collapsed: '/assets/images/logo-simples-back-black.svg'
+            expanded: '/mvp-yipe/frontend/assets/images/logo-back-white.svg',
+            collapsed: '/mvp-yipe/frontend/assets/images/logo-simples-back-black.svg'
         },
         dark: {
-            expanded: '/assets/images/logo-back-black.svg',
-            collapsed: '/assets/images/logo-simples-back-white.svg'
+            expanded: '/mvp-yipe/frontend/assets/images/logo-back-black.svg',
+            collapsed: '/mvp-yipe/frontend/assets/images/logo-simples-back-white.svg'
         }
     };
 

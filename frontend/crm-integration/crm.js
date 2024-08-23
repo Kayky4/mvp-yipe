@@ -431,3 +431,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderLeads();
 });
+
+// Pega o token JWT armazenado após o login
+const token = localStorage.getItem('token');
+
+// Usa o token JWT na requisição para buscar leads do CRM
+fetch('http://localhost:3009/api/crm/leads', {
+    method: 'GET',
+    headers: {
+        'Authorization': `Bearer ${token}`  // Envia o token JWT no cabeçalho da requisição
+    }
+}).then(response => response.json())
+  .then(data => {
+      // Lida com os dados recebidos
+      console.log(data);
+      // Código para exibir os leads na interface
+  })
+  .catch(err => console.error('Erro ao buscar leads:', err));

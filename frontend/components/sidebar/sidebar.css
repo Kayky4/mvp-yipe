@@ -40,7 +40,8 @@
 .sidebar button a:hover, .profile-dropdown button:hover, #themeToggle:hover{
     background-color: #FFFFFF;
     border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); */
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     color: #333;
 }
@@ -48,6 +49,14 @@
 .sidebar button i{
     margin-right: 12px;
     color: #333;
+}
+
+.sidebar button.active a, .sidebar button.active a i {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0px 5px rgba(0, 0, 0, 0.1);
+    color: #0152F8;
+    font-weight: 700;
 }
 
 .section1-li-config, .section-li-config{
@@ -189,6 +198,15 @@ body.theme-dark .sidebar.collapsed .logo-icon-menu-hamburguer #sidebarToggle:hov
     background-color: #464646;
     border-radius: 0;
     /* border-radius: 10px; */
+}
+
+body.theme-dark .sidebar button.active a{
+    background-color: #464646;
+    border-radius: 0;
+}
+
+body.theme-dark .sidebar button.active i{
+    background-color: #464646;
 }
 
 .sidebar.collapsed .logo-icon-menu-hamburguer{
