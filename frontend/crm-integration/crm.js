@@ -436,7 +436,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const token = localStorage.getItem('token');
 
 // Usa o token JWT na requisição para buscar leads do CRM
-fetch('http://localhost:3009/api/crm/leads', {
+fetch('http://localhost:3017/api/crm/leads', {
     method: 'GET',
     headers: {
         'Authorization': `Bearer ${token}`  // Envia o token JWT no cabeçalho da requisição

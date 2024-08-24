@@ -9,6 +9,9 @@ const authMiddleware = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
+// Obter o objeto io configurado no servidor
+const { io } = require('../index');
+
 // Criar Lead
 router.post('/leads', authMiddleware, async (req, res) => {
     const { name, email, phone, stageId, userId } = req.body;
@@ -75,6 +78,17 @@ router.post('/leads/:id/reminders', authMiddleware, async (req, res) => {
         res.status(201).json({ message: 'Lembrete configurado com sucesso', reminder });
     } catch (error) {
         res.status(500).json({ error: 'Erro ao configurar lembrete', details: error.message });
+    }
+});
+
+// Nova Rota: Sincronizar Etapas
+router.get('/stages/sync', authMiddleware, async (req, res) => {
+    try {
+        const stages = await Stage.findAll();
+        io.emit('stagesUpdated', stages); // Emite um evento WebSocket para todos os clientes conectados
+        res.status(200).json({ message: 'Etapas sincronizadas e emitidas via WebSocket' });
+    } catch (error) {
+        res.status(500).json({ error: 'Erro ao sincronizar etapas', details: error.message });
     }
 });
 

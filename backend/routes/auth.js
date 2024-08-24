@@ -23,7 +23,7 @@ router.post('/login', async (req, res) => {
 
         const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        res.status(200).json({ message: 'Autenticação bem-sucedida', token, redirectUrl: '/dashboard' });
+        res.status(200).json({ message: 'Autenticação bem-sucedida', token, redirectUrl: '/mvp-yipe/frontend/index.html' });
     } catch (error) {
         res.status(500).json({ error: 'Erro ao autenticar usuário', details: error.message });
     }

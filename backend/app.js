@@ -4,10 +4,19 @@ const sequelize = require('./models'); // Certifique-se de que isso aponta para 
 const authRoutes = require('./routes/auth');
 const crmRoutes = require('./routes/crm');
 const pipelineRoutes = require('./routes/pipeline');
+const cors = require('cors');  // Importe o pacote cors
 
 dotenv.config();
 
 const app = express();
+
+// Configuração do CORS
+const corsOptions = {
+    origin: 'http://127.0.0.1:5500', // Permitir apenas o frontend rodando nessa origem
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 // Middleware para parsing de JSON
 app.use(express.json());

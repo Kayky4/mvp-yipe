@@ -1,63 +1,63 @@
 const express = require('express');
-const Lead = require('../models/lead');
+const Stage = require('../models/stage'); // Certifique-se de que este é o modelo correto
 const authMiddleware = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-// Rota para criar um novo lead
-router.post('/', authMiddleware, async (req, res) => {
-    const { name, email, phone, status } = req.body;
+// Rota para criar uma nova etapa (stage)
+router.post('/stages', authMiddleware, async (req, res) => {
+    const { name, pipelineId, order, content } = req.body;
 
     try {
-        const lead = await Lead.create({ name, email, phone, status });
-        res.status(201).json({ message: 'Lead criado com sucesso', lead });
+        const stage = await Stage.create({ name, pipelineId, order, content });
+        res.status(201).json({ message: 'Etapa criada com sucesso', stage });
     } catch (error) {
-        res.status(500).json({ error: 'Erro ao criar lead', details: error.message });
+        res.status(500).json({ error: 'Erro ao criar etapa', details: error.message });
     }
 });
 
-// Rota para listar todos os leads
-router.get('/', authMiddleware, async (req, res) => {
+// Rota para listar todas as etapas (stages)
+router.get('/stages', authMiddleware, async (req, res) => {
     try {
-        const leads = await Lead.findAll();
-        res.status(200).json(leads);
+        const stages = await Stage.findAll();
+        res.status(200).json(stages);
     } catch (error) {
-        res.status(500).json({ error: 'Erro ao listar leads' });
+        res.status(500).json({ error: 'Erro ao listar etapas' });
     }
 });
 
-// Rota para atualizar um lead
-router.put('/:id', authMiddleware, async (req, res) => {
+// Rota para atualizar uma etapa (stage)
+router.put('/stages/:id', authMiddleware, async (req, res) => {
     const { id } = req.params;
-    const { name, email, phone, status } = req.body;
+    const { name, order, content } = req.body;
 
     try {
-        const lead = await Lead.findByPk(id);
-        if (!lead) {
-            return res.status(404).json({ error: 'Lead não encontrado' });
+        const stage = await Stage.findByPk(id);
+        if (!stage) {
+            return res.status(404).json({ error: 'Etapa não encontrada' });
         }
 
-        await lead.update({ name, email, phone, status });
-        res.status(200).json({ message: 'Lead atualizado com sucesso', lead });
+        await stage.update({ name, order, content });
+        res.status(200).json({ message: 'Etapa atualizada com sucesso', stage });
     } catch (error) {
-        res.status(500).json({ error: 'Erro ao atualizar lead', details: error.message });
+        res.status(500).json({ error: 'Erro ao atualizar etapa', details: error.message });
     }
 });
 
-// Rota para deletar um lead
-router.delete('/:id', authMiddleware, async (req, res) => {
+// Rota para deletar uma etapa (stage)
+router.delete('/stages/:id', authMiddleware, async (req, res) => {
     const { id } = req.params;
 
     try {
-        const lead = await Lead.findByPk(id);
-        if (!lead) {
-            return res.status(404).json({ error: 'Lead não encontrado' });
+        const stage = await Stage.findByPk(id);
+        if (!stage) {
+            return res.status(404).json({ error: 'Etapa não encontrada' });
         }
 
-        await lead.destroy();
-        res.status(200).json({ message: 'Lead deletado com sucesso' });
+        await stage.destroy();
+        res.status(200).json({ message: 'Etapa deletada com sucesso' });
     } catch (error) {
-        res.status(500).json({ error: 'Erro ao deletar lead', details: error.message });
+        res.status(500).json({ error: 'Erro ao deletar etapa', details: error.message });
     }
 });
 

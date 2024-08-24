@@ -56,7 +56,7 @@ document.getElementById('updateProfileForm').addEventListener('submit', async fu
     const profileImage = document.getElementById('profileImage').value;
 
     try {
-        const response = await fetch('http://localhost:3009/api/auth/me', {
+        const response = await fetch('http://localhost:3017/api/auth/me', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
